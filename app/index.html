@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" ng-app="validatorApp">
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS-Validation</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-10">
+          <h4 align="center">Validation</h4>
+          <form class="form-horizontal" name="form" novalidate enctype="multipart/form-data">
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="name">Name:</label>
+              <div class="col-sm-10">
+                <input type="text" 
+                    ng-class="{'form-control':true, 'has-error': form.name.$invalid &&!form.name.$pristine}" 
+                    id="name" 
+                    name="name" 
+                    ng-model="name" 
+                    ng-minlength="3" 
+                    alpha-input 
+                    placeholder="Enter your name" 
+                    required />
+                <div ng-messages="form.name.$error" ng-if="form.name.$touched">
+                    <div ng-messages-include="error-messages"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Email:</label>
+              <div class="col-sm-10">
+                <input type="email" 
+                    ng-class="{'form-control':true, 'has-error': form.email.$invalid &&!form.email.$pristine}" 
+                    id="email" 
+                    name="email" 
+                    ng-model="email" 
+                    ng-model-options="{ debounce: 100 , updateOn: 'blur'}"
+                    unique-email 
+                    ng-disabled="form.email.$pending"
+                    placeholder="Enter your email address" 
+                    required />
+                <span>* Use any emails from users.json file for checking unique emails validation</span>
+                <div ng-if="form.email.$pending">
+                    <span class="help-block">Checking email address....</span>
+                </div>
+                <div ng-messages="form.email.$error" ng-if="form.email.$touched">
+                    <div ng-messages-include="error-messages"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="mobile">Mobile:</label>
+              <div class="col-sm-10">          
+                <input type="text" 
+                    ng-class="{'form-control':true, 'has-error': form.mobile.$invalid &&!form.mobile.$pristine}" 
+                    id="mobile" 
+                    name="mobile"
+                    ng-model="mobile" 
+                    mobile-input 
+                    placeholder="Enter mobile number" required/>  
+                <div ng-messages="form.mobile.$error" ng-if="form.mobile.$touched">
+                    <div ng-messages-include="error-messages"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="pincode">Pincode:</label>
+              <div class="col-sm-10">          
+                <input type="text" 
+                      ng-class="{'form-control':true, 'has-error': form.pincode.$invalid &&!form.pincode.$pristine}" 
+                      id="pincode" 
+                      name="pincode" 
+                      ng-model="pincode" 
+                      pincode-input 
+                      placeholder="Enter pincode number" required/>
+                <div ng-messages="form.pincode.$error" ng-if="form.pincode.$touched">
+                    <div ng-messages-include="error-messages"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="pwd">Password:</label>
+              <div class="col-sm-10">          
+                <input type="password" 
+                      ng-class="{'form-control':true, 'has-error': form.password.$invalid &&!form.password.$pristine}" 
+                      id="pwd" 
+                      name="password"
+                      ng-model="password" 
+                      strong-password
+                      placeholder="Enter password" required/>
+                <div ng-messages="form.password.$error" ng-if="form.password.$touched">
+                  <div ng-messages-include="error-messages"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="cpwd">Confirm Password:</label>
+              <div class="col-sm-10">          
+                <input type="password" 
+                      ng-class="{'form-control':true, 'has-error': form.cpassword.$invalid &&!form.cpassword.$pristine}" 
+                      id="cpwd" 
+                      name="cpassword"
+                      ng-model="cpassword" 
+                      compare-to="password" 
+                      placeholder="Enter confirm password" required />
+                <div ng-messages="form.cpassword.$error" ng-if="form.cpassword.$touched">
+                    <div ng-messages-include="error-messages"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="amount">Amount:</label>
+              <div class="col-sm-10">          
+                <input type="text" 
+                      ng-class="{'form-control':true, 'has-error': form.amount.$invalid &&!form.amount.$pristine}" 
+                      id="amount" 
+                      name="amount"
+                      ng-model="amount" 
+                      price-input
+                      placeholder="Enter amount" required />
+                <div ng-messages="form.amount.$error" ng-if="form.amount.$touched">
+                    <div ng-messages-include="error-messages"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+                <!-- File Button --> 
+                <label class="rl-label col-md-2 control-label" for="filebutton">Image</label>
+                <div class="col-md-10">
+                      <input type="file" 
+                            name="file" 
+                            ng-model="file" 
+                            maxsize="1000000" 
+                            file-input 
+                            accept="image/jpg,image/jpeg" required />
+                    <div ng-messages="form.file.$error" ng-if="form.file.$touched">
+                        <div ng-messages-include="error-messages"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">        
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" ng-disabled="!form.$valid">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="angular-validator/validator.module.js"></script>
+    <script src="app.module.js"></script>
+    <script type="text/ng-template" id="error-messages">
+        <span class="help-block" ng-message="required">This field is required</span>
+        <span class="help-block" ng-message="minlength">This field should contain atleast 3 characters</span>
+        <span class="help-block" ng-message="email">The email must be a valid email address.</span>
+        <span class="help-block" ng-message="verify">This email address is already registered with us</span>
+        <span class="help-block" ng-message="maxlength">This field is too long</span>
+        <span class="help-block" ng-message="alphabet">The field may only contain letters.</span>
+        <span class="help-block" ng-message="contact">Invalid contact number.</span>
+        <span class="help-block" ng-message="compare">The password confirmation does not match.</span>
+        <span class="help-block" ng-message="pwdmax">Password should not be greater than 15 characters.</span>
+        <span class="help-block" ng-message="pwdmin">Password should not be less than six characters.</span>
+        <span class="help-block" ng-message="specialcharrule">Password should have atleast one special characters.</span>
+        <span class="help-block" ng-message="digitrule">Password should have atleast one special digit.</span>
+        <span class="help-block" ng-message="price">Invalid amount.</span>
+        <span class="help-block" ng-message="validtype">Invalid file type. Only jpeg, jpg file types allowed.</span>
+        <span class="help-block" ng-message="maxsize">Invalid file size. Maximum 1mb of size allowed</span>
+    </script>
+  </body>
+</html>
