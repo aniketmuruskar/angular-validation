@@ -10,8 +10,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-10">
-          <!-- <h4 align="center">Validation</h4> -->
-          <form class="form-horizontal" name="form" novalidate>
+          <h4 align="center">Validation</h4>
+          <form class="form-horizontal" name="form" novalidate enctype="multipart/form-data">
             <div class="form-group">
               <label class="control-label col-sm-2" for="name">Name:</label>
               <div class="col-sm-10">
@@ -130,7 +130,12 @@
                 <!-- File Button --> 
                 <label class="rl-label col-md-2 control-label" for="filebutton">Image</label>
                 <div class="col-md-10">
-                      <input type="file" name="file" ng-model="file" file-input accept="['jpg','jpeg']" />
+                      <input type="file" 
+                            name="file" 
+                            ng-model="file" 
+                            maxsize="1000000" 
+                            file-input 
+                            accept="image/jpg,image/jpeg" required />
                     <div ng-messages="form.file.$error" ng-if="form.file.$touched">
                         <div ng-messages-include="error-messages"></div>
                     </div>
@@ -163,8 +168,8 @@
         <span class="help-block" ng-message="specialcharrule">Password should have atleast one special characters.</span>
         <span class="help-block" ng-message="digitrule">Password should have atleast one special digit.</span>
         <span class="help-block" ng-message="price">Invalid amount.</span>
-        <span class="help-block" ng-message="validtype">Invalid file type.</span>
-        <span class="help-block" ng-message="maxsize">Invalid file size.</span>
+        <span class="help-block" ng-message="validtype">Invalid file type. Only jpeg, jpg file types allowed.</span>
+        <span class="help-block" ng-message="maxsize">Invalid file size. Maximum 1mb of size allowed</span>
     </script>
   </body>
 </html>
