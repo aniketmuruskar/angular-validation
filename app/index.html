@@ -10,41 +10,67 @@
       <div class="row">
         <div class="col-md-6 col-sm-10">
           <h4 align="center">Validation</h4>
-          <form class="form-horizontal">
+          <form class="form-horizontal" name="form">
             <div class="form-group">
               <label class="control-label col-sm-2" for="name">Name:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                <input type="text" class="form-control" id="name" ng-model="name" alpha-input placeholder="Enter your name" />
+                <div ng-messages="form.name.$error" ng-if="form.name.$touched">
+                    <div ng-messages-include="error-messages"></div>
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="email">Email:</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                <input type="email" 
+                      class="form-control" 
+                      id="email" 
+                      ng-model="email" 
+                      placeholder="Enter your email address" />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="mobile">Mobile:</label>
               <div class="col-sm-10">          
-                <input type="text" class="form-control" id="mobile" placeholder="Enter mobile number">
+                <input type="text" 
+                      class="form-control" 
+                      id="mobile" 
+                      ng-model="mobile" 
+                      mobile-input
+                      placeholder="Enter mobile number" />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="pincode">Pincode:</label>
               <div class="col-sm-10">          
-                <input type="text" class="form-control" id="pincode" placeholder="Enter pincode number">
+                <input type="text" 
+                      class="form-control" 
+                      id="pincode" 
+                      ng-model="pincode" 
+                      pincode-input 
+                      placeholder="Enter pincode number" />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="pwd">Password:</label>
               <div class="col-sm-10">          
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                <input type="password" 
+                      class="form-control" 
+                      id="pwd" 
+                      ng-model="password" 
+                      placeholder="Enter password" />
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="cpwd">Confirm Password:</label>
               <div class="col-sm-10">          
-                <input type="password" class="form-control" id="cpwd" placeholder="Enter confirm password">
+                <input type="password" 
+                      class="form-control" 
+                      id="cpwd" 
+                      ng-model="cpassword" 
+                      compare-to="password" 
+                      placeholder="Enter confirm password" />
               </div>
             </div>
             <div class="form-group">        
@@ -60,5 +86,14 @@
     <script src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script src="angular-validator/validator.module.js"></script>
     <script src="app.module.js"></script>
+    <script type="text/ng-template" id="error-messages">
+        <span class="help-block" ng-message="required">This field is required</span>
+        <span class="help-block" ng-message="email">The email must be a valid email address.</span>
+        <span class="help-block" ng-message="verify">This email address is already registered with us</span>
+        <span class="help-block" ng-message="maxlength">This field is too long</span>
+        <span class="help-block" ng-message="alphabet">The field may only contain letters.</span>
+        <span class="help-block" ng-message="contact">Invalid contact number.</span>
+        <span class="help-block" ng-message="compare">The password confirmation does not match.</span>
+    </script>
   </body>
 </html>
