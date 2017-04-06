@@ -8,7 +8,7 @@ This repository demonstrates the simple form validation in web-application using
 
 ## Getting Started
 
-To get you started with angular js you can simply clone the `angular-validation` repository and install the dependencies:
+To get you started with angularjs validation you can simply clone the `angular-validation` repository and install the dependencies.
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ node_modules/...	--> development tools (fetched using `npm`)
 bower.json 		--> Bower specific metadata, including client-side dependencies
 package.json 	--> Node.js specific metadata, including development tools dependencies
 .bowerrc 	--> This file specify directory where to place install front end libraries 
-				using bower, by default within `app/bower_components/`
+			using bower, by default within `app/bower_components/`
 ```
 
 
