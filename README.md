@@ -19,8 +19,6 @@ To get you started with angular js you can simply clone the `angular-validation`
 
 #### Clone `angular-validation`
 
-Clone the `angular-validation` repository using git:
-
 ```
 git clone https://github.com/aniketmuruskar/angular-validation.git
 cd angular-validation
@@ -59,20 +57,20 @@ makes it easier to serve the files by a web server.*
 ## Application Directory Layout
 
 ```
-app/	--> all the source code of the app
+app/					--> all the source code of the app
   bower_components/...	--> 3rd party JS/CSS libraries, including Angular and Angular Messages
   angular-validator/
   	validator.module.js 	--> the main validator module, here we can extra validation
   app.module.js 	--> the main app module
-  index.html 	--> app layout file (the main HTML template file of the app)
-  users.json 	--> already register email address for demonstration purpose
+  index.html 		--> app layout file (the main HTML template file of the app)
+  users.json 		--> already register email address for demonstration purpose
 
 node_modules/...	--> development tools (fetched using `npm`)
 
 bower.json 		--> Bower specific metadata, including client-side dependencies
 package.json 	--> Node.js specific metadata, including development tools dependencies
-.bowerrc 	--> This file specify directory where to place install front end libraries using bower, 
-				by default within `app/bower_components/`
+.bowerrc 		--> This file specify directory where to place install front end libraries using bower, 
+					by default within `app/bower_components/`
 ```
 
 
