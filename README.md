@@ -57,7 +57,7 @@ makes it easier to serve the files by a web server.*
 ## Application Directory Layout
 
 ```
-app/					--> all the source code of the app
+app/		--> all the source code of the app
   bower_components/...	--> 3rd party JS/CSS libraries, including Angular and Angular Messages
   angular-validator/
   	validator.module.js 	--> the main validator module, here we can extra validation
@@ -69,8 +69,8 @@ node_modules/...	--> development tools (fetched using `npm`)
 
 bower.json 		--> Bower specific metadata, including client-side dependencies
 package.json 	--> Node.js specific metadata, including development tools dependencies
-.bowerrc 		--> This file specify directory where to place install front end libraries using bower, 
-					by default within `app/bower_components/`
+.bowerrc 		--> This file specify directory where to place install front end libraries 
+using bower, by default within `app/bower_components/`
 ```
 
 
