@@ -69,8 +69,8 @@ node_modules/...	--> development tools (fetched using `npm`)
 
 bower.json 		--> Bower specific metadata, including client-side dependencies
 package.json 	--> Node.js specific metadata, including development tools dependencies
-.bowerrc 		--> This file specify directory where to place install front end libraries 
-using bower, by default within `app/bower_components/`
+.bowerrc 	--> This file specify directory where to place install front end libraries 
+				using bower, by default within `app/bower_components/`
 ```
 
 
